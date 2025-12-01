@@ -16,27 +16,27 @@ end
 
 # Count the times we cross 0, don't forget to start at 50...
 # I also want to calculate the total number of moves and what the final dial position is because why not?
-function count_zero_hits(moves; start = 50)
+function countZeroHits(moves; start = 50)
     before = start
-    total_hits = 0
+    totalHits = 0
     for m in moves
         after = before + m
         if m > 0
             # positive move, count multiples of 100
-            total_hits += fld(after, 100) - fld(before, 100)
+            totalHits += fld(after, 100) - fld(before, 100)
         elseif m < 0
             # negative move, count multiples of 100
-            total_hits += fld(before - 1, 100) - fld(after - 1, 100)
+            totalHits += fld(before - 1, 100) - fld(after - 1, 100)
         end
         before = after
     end
-    final_unwrapped = before
-    dial_pos = mod(final_unwrapped, 100)  # 0–99
-    return total_hits, final_unwrapped, dial_pos
+    finalUnwrapped = before
+    dialPos = mod(finalUnwrapped, 100)  # 0–99
+    return totalHits, finalUnwrapped, dialPos
 end
 
 # Display results
-total_hits, final_unwrapped, dial_pos = count_zero_hits(moves)
-println("Total zero hits: ", total_hits)
-println("Final unwrapped position: ", final_unwrapped)
-println("Final dial position (0–99): ", dial_pos)
+totalHits, finalUnwrapped, dialPos = countZeroHits(moves)
+println("Total zero hits: ", totalHits)
+println("Final unwrapped position: ", finalUnwrapped)
+println("Final dial position (0–99): ", dialPos)
