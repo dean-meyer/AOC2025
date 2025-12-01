@@ -30,13 +30,13 @@ function countZeroHits(moves; start = 50)
         end
         before = after
     end
-    finalUnwrapped = before
-    dialPos = mod(finalUnwrapped, 100)  # 0–99
-    return totalHits, finalUnwrapped, dialPos
+    finalMovesCount = before
+    dialPos = mod(finalMovesCount, 100)  # 0–99
+    return totalHits, finalMovesCount, dialPos
 end
 
 # Display results
-totalHits, finalUnwrapped, dialPos = countZeroHits(moves)
+totalHits, finalMovesCount, dialPos = countZeroHits(moves)
 println("Total zero hits: ", totalHits)
-println("Final unwrapped position: ", finalUnwrapped)
+println("Final dial moves: ", finalMovesCount)
 println("Final dial position (0–99): ", dialPos)
