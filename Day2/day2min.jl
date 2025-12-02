@@ -11,6 +11,6 @@ a,b=let L=ndigits(hi);x1=Int[];x2=Int[]
     end
     sort!(x1);unique!(x1);sort!(x2);unique!(x2);x1,x2
 end
-g(v,r)=sum((a,b)=t;i=searchsortedfirst(v,a);j=searchsortedlast(v,b);i<=j ? sum(@view v[i:j]) : 0 for t in r)
+g(v,r)=sum((a=t[1];b=t[2];i=searchsortedfirst(v,a);j=searchsortedlast(v,b);i<=j ? sum(@view v[i:j]) : 0) for t in r)
 println("Part 1 Answer: ",g(a,r))
 println("Part 2 Answer: ",g(b,r))
